@@ -11,7 +11,7 @@ class PortfoliosController < ApplicationController
     @portfolio_item = Portfolio.new(portfolio_params)
 
     respond_to do |format|
-      if (@portfolio_item.save)
+      if @portfolio_item.save
         format.html { redirect_to portfolios_path, notice: 'Portfolio created' }
         format.json { render :show, status: created, location: @portfolio_item }
       else
@@ -23,7 +23,7 @@ class PortfoliosController < ApplicationController
 
   private
 
-    def portfolio_params
-      params.require(:portfolio).permit(:title, :subtitle, :body)
-    end
+  def portfolio_params
+    params.require(:portfolio).permit(:title, :subtitle, :body)
+  end
 end
